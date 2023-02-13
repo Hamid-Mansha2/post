@@ -1,0 +1,25 @@
+services:
+
+  - postgresql
+
+…
+
+before_script:
+
+  - "cp ./config/database.yml.travis ./config/database.yml"
+
+  - "bundle exec rails db:create"
+
+  - "bundle exec rails db:migrate"
+
+…
+
+env:
+
+  global:
+
+    - CI=true
+
+    - PGPORT=5433
+
+    - PGUSER=travis
